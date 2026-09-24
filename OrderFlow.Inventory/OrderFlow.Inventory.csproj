@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UserSecretsId>dotnet-OrderFlow.Inventory-3dd9433d-9ef0-4fd0-b662-75e2cb9f7ba8</UserSecretsId>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Confluent.Kafka" Version="2.15.0" />
+        <PackageReference Include="Confluent.SchemaRegistry.Serdes.Avro" Version="2.15.0" />
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.10"/>
+        <PackageReference Include="SchemaRegistry" Version="1.1.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\OrderFlow.Application\OrderFlow.Application.csproj" />
+      <ProjectReference Include="..\OrderFlow.Domain\OrderFlow.Domain.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Contracts\" />
+    </ItemGroup>
+</Project>

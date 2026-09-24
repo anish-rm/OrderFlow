@@ -1,0 +1,16 @@
+{
+  "type": "record",
+  "name": "OrderPlaced",
+  "namespace": "OrderFlow.Contracts",
+  "fields": [
+    { "name": "EventId", "type": { "type": "string", "logicalType": "uuid" }},
+      { "name": "EventName",  "type": "string" },
+    { "name": "CustomerId", "type": "string" },
+    { "name": "OrderId",    "type": "string" },
+    { "name": "Amount",     "type": "double" },
+    { "name": "OccurredAt",  "type": { "type": "long", "logicalType": "timestamp-millis" } },
+    { "name": "EventVersion", "type": "int" },
+    { "name": "CorrelationId", "type": "string", "default": "" },
+    { "name": "CausationId",   "type": "string", "default": "" }
+  ]
+}

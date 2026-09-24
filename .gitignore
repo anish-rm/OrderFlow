@@ -1,0 +1,97 @@
+# OS / editor files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# VS / VS Code / JetBrains
+.vs/
+.vscode/
+.idea/
+*.code-workspace
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.dbmdl
+*.jfm
+*.pdb
+*.pidb
+*.svclog
+*.log
+*.orig
+*.rej
+
+# Build outputs
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+artifacts/
+TestResults/
+
+# NuGet / package restore
+packages/
+*.nupkg
+*.snupkg
+.nuget/
+project.lock.json
+packages.lock.json
+
+# .NET generated files
+*.dll
+*.exe
+*.app
+*.apphost
+*.runtimeconfig
+*.runtimeconfig.json
+*.deps.json
+*.json.gz
+*.manifest
+*.cache
+*.AssemblyInfo.cs
+
+# Local database / data files
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+*.ldf
+*.mdf
+
+# Secret / environment config
+appsettings.Development.json
+appsettings.Local.json
+secrets.json
+.env
+.env.*
+*.pem
+*.pfx
+
+# Kafka / local infrastructure data
+kafka-data/
+zookeeper-data/
+logs/
+log/
+/tmp/
+temp/
+*.tmp
+
+# Rider / other tooling
+*.idea/
+*.iml
+*.iws
+*.ipr
+
+# Test / coverage output
+coverage/
+coverage*.json
+coverage*.xml
+coverage*.info
+
+# Backup files
+*~
+*.bak
+*.backup
