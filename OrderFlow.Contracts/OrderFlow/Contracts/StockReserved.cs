@@ -16,8 +16,9 @@ namespace OrderFlow.Contracts
 	[global::System.CodeDom.Compiler.GeneratedCodeAttribute("avrogen", "1.12.2+8fa2067f70e3012cb3fd9a8839cd97e8c7cc1772")]
 	public partial class StockReserved : global::Avro.Specific.ISpecificRecord
 	{
-		public static global::Avro.Schema _SCHEMA = global::Avro.Schema.Parse(@"{""type"":""record"",""name"":""StockReserved"",""namespace"":""OrderFlow.Contracts"",""fields"":[{""name"":""EventId"",""type"":{""type"":""string"",""logicalType"":""uuid""}},{""name"":""EventName"",""type"":""string""},{""name"":""CustomerId"",""type"":""string""},{""name"":""OrderId"",""type"":""string""},{""name"":""OccurredAt"",""type"":{""type"":""long"",""logicalType"":""timestamp-millis""}},{""name"":""EventVersion"",""type"":""int""},{""name"":""CorrelationId"",""type"":""string""},{""name"":""CausationId"",""type"":""string""},{""name"":""ReservationStatus"",""type"":""string""}]}");
+		public static global::Avro.Schema _SCHEMA = global::Avro.Schema.Parse(@"{""type"":""record"",""name"":""StockReserved"",""namespace"":""OrderFlow.Contracts"",""fields"":[{""name"":""EventId"",""type"":{""type"":""string"",""logicalType"":""uuid""}},{""name"":""ReservationId"",""type"":{""type"":""string"",""logicalType"":""uuid""}},{""name"":""EventName"",""type"":""string""},{""name"":""CustomerId"",""type"":""string""},{""name"":""OrderId"",""type"":""string""},{""name"":""OccurredAt"",""type"":{""type"":""long"",""logicalType"":""timestamp-millis""}},{""name"":""EventVersion"",""type"":""int""},{""name"":""CorrelationId"",""type"":""string""},{""name"":""CausationId"",""type"":""string""},{""name"":""ReservationStatus"",""type"":""string""}]}");
 		private System.Guid _EventId;
+		private System.Guid _ReservationId;
 		private string _EventName;
 		private string _CustomerId;
 		private string _OrderId;
@@ -42,6 +43,17 @@ namespace OrderFlow.Contracts
 			set
 			{
 				this._EventId = value;
+			}
+		}
+		public System.Guid ReservationId
+		{
+			get
+			{
+				return this._ReservationId;
+			}
+			set
+			{
+				this._ReservationId = value;
 			}
 		}
 		public string EventName
@@ -137,14 +149,15 @@ namespace OrderFlow.Contracts
 			switch (fieldPos)
 			{
 			case 0: return this.EventId;
-			case 1: return this.EventName;
-			case 2: return this.CustomerId;
-			case 3: return this.OrderId;
-			case 4: return this.OccurredAt;
-			case 5: return this.EventVersion;
-			case 6: return this.CorrelationId;
-			case 7: return this.CausationId;
-			case 8: return this.ReservationStatus;
+			case 1: return this.ReservationId;
+			case 2: return this.EventName;
+			case 3: return this.CustomerId;
+			case 4: return this.OrderId;
+			case 5: return this.OccurredAt;
+			case 6: return this.EventVersion;
+			case 7: return this.CorrelationId;
+			case 8: return this.CausationId;
+			case 9: return this.ReservationStatus;
 			default: throw new global::Avro.AvroRuntimeException("Bad index " + fieldPos + " in Get()");
 			};
 		}
@@ -153,14 +166,15 @@ namespace OrderFlow.Contracts
 			switch (fieldPos)
 			{
 			case 0: this.EventId = (System.Guid)fieldValue; break;
-			case 1: this.EventName = (System.String)fieldValue; break;
-			case 2: this.CustomerId = (System.String)fieldValue; break;
-			case 3: this.OrderId = (System.String)fieldValue; break;
-			case 4: this.OccurredAt = (System.DateTime)fieldValue; break;
-			case 5: this.EventVersion = (System.Int32)fieldValue; break;
-			case 6: this.CorrelationId = (System.String)fieldValue; break;
-			case 7: this.CausationId = (System.String)fieldValue; break;
-			case 8: this.ReservationStatus = (System.String)fieldValue; break;
+			case 1: this.ReservationId = (System.Guid)fieldValue; break;
+			case 2: this.EventName = (System.String)fieldValue; break;
+			case 3: this.CustomerId = (System.String)fieldValue; break;
+			case 4: this.OrderId = (System.String)fieldValue; break;
+			case 5: this.OccurredAt = (System.DateTime)fieldValue; break;
+			case 6: this.EventVersion = (System.Int32)fieldValue; break;
+			case 7: this.CorrelationId = (System.String)fieldValue; break;
+			case 8: this.CausationId = (System.String)fieldValue; break;
+			case 9: this.ReservationStatus = (System.String)fieldValue; break;
 			default: throw new global::Avro.AvroRuntimeException("Bad index " + fieldPos + " in Put()");
 			};
 		}

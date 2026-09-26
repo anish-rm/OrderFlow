@@ -7,6 +7,7 @@ public class InventoryDbContext : DbContext
     public InventoryDbContext(DbContextOptions<InventoryDbContext> options) : base(options){}
     public DbSet<ProcessedEvents>  ProcessedEvents { get; set; }
     public DbSet<StockReservation> StockReservation { get; set; }
+    public DbSet<OutboxMessage> OutboxMessage { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

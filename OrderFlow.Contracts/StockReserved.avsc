@@ -3,17 +3,54 @@
   "name": "StockReserved",
   "namespace": "OrderFlow.Contracts",
   "fields": [
-    { "name": "EventId", "type": { "type": "string", "logicalType": "uuid" } },
-    { "name": "EventName", "type": "string" },
-    { "name": "CustomerId", "type": "string" },
-    { "name": "OrderId", "type": "string" },
+    {
+      "name": "EventId",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      }
+    },
+    {
+      "name": "ReservationId",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      }
+    },
+    {
+      "name": "EventName",
+      "type": "string"
+    },
+    {
+      "name": "CustomerId",
+      "type": "string"
+    },
+    {
+      "name": "OrderId",
+      "type": "string"
+    },
     {
       "name": "OccurredAt",
-      "type": { "type": "long", "logicalType": "timestamp-millis" }
+      "type": {
+        "type": "long",
+        "logicalType": "timestamp-millis"
+      }
     },
-    { "name": "EventVersion", "type": "int" },
-    { "name": "CorrelationId", "type": "string" },
-    { "name": "CausationId", "type": "string" },
-    { "name": "ReservationStatus", "type": "string" }
+    {
+      "name": "EventVersion",
+      "type": "int"
+    },
+    {
+      "name": "CorrelationId",
+      "type": "string"
+    },
+    {
+      "name": "CausationId",
+      "type": "string"
+    },
+    {
+      "name": "ReservationStatus",
+      "type": "string"
+    }
   ]
 }

@@ -33,8 +33,6 @@ public class OutboxRelayService(IProducer<string, PaymentReceived> producer,
                         }
 
                         var PaymentReceivedEvent = JsonSerializer.Deserialize<PaymentReceived>(outboxMessage.Payload);
-                        PaymentReceivedEvent.CorrelationId ??= "";
-                        PaymentReceivedEvent.CausationId ??= "";
                         var message = new Message<string, PaymentReceived>()
                             { Key = outboxMessage.Key, Value = PaymentReceivedEvent};
                         var result = await producer.ProduceAsync(TopicName.ORDEREVENTS, message);
