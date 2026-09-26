@@ -8,11 +8,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderFlow.Application", "Or
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderFlow.Common", "OrderFlow.Common\OrderFlow.Common.csproj", "{878193FE-4761-40CB-B104-058B4FE84867}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderFlow.PaymentsConsole", "OrderFlow.PaymentsConsole\OrderFlow.PaymentsConsole.csproj", "{E70A43C4-DA1A-4025-9620-B26731D2FA78}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderFlow.Domain", "OrderFlow.Domain\OrderFlow.Domain.csproj", "{8211716D-1B4F-4BB0-ADE1-9A31C2BB667D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderFlow.ConsumersCoOperative", "OrderFlow.ConsumersCoOperative\OrderFlow.ConsumersCoOperative.csproj", "{C60C3775-2B50-4530-A134-F2972B2AE1F9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderFlow.Inventory", "OrderFlow.Inventory\OrderFlow.Inventory.csproj", "{861C0104-B669-44F9-92C7-F6A51894556C}"
 EndProject
@@ -42,18 +38,10 @@ Global
 		{878193FE-4761-40CB-B104-058B4FE84867}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{878193FE-4761-40CB-B104-058B4FE84867}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{878193FE-4761-40CB-B104-058B4FE84867}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E70A43C4-DA1A-4025-9620-B26731D2FA78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E70A43C4-DA1A-4025-9620-B26731D2FA78}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E70A43C4-DA1A-4025-9620-B26731D2FA78}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E70A43C4-DA1A-4025-9620-B26731D2FA78}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8211716D-1B4F-4BB0-ADE1-9A31C2BB667D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8211716D-1B4F-4BB0-ADE1-9A31C2BB667D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8211716D-1B4F-4BB0-ADE1-9A31C2BB667D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8211716D-1B4F-4BB0-ADE1-9A31C2BB667D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C60C3775-2B50-4530-A134-F2972B2AE1F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C60C3775-2B50-4530-A134-F2972B2AE1F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C60C3775-2B50-4530-A134-F2972B2AE1F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C60C3775-2B50-4530-A134-F2972B2AE1F9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{861C0104-B669-44F9-92C7-F6A51894556C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{861C0104-B669-44F9-92C7-F6A51894556C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{861C0104-B669-44F9-92C7-F6A51894556C}.Release|Any CPU.ActiveCfg = Release|Any CPU

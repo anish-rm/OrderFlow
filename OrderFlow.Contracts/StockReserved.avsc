@@ -1,19 +1,19 @@
 {
   "type": "record",
-  "name": "OrderPlaced",
+  "name": "StockReserved",
   "namespace": "OrderFlow.Contracts",
   "fields": [
     { "name": "EventId", "type": { "type": "string", "logicalType": "uuid" } },
     { "name": "EventName", "type": "string" },
     { "name": "CustomerId", "type": "string" },
     { "name": "OrderId", "type": "string" },
-    { "name": "Amount", "type": "double" },
     {
       "name": "OccurredAt",
       "type": { "type": "long", "logicalType": "timestamp-millis" }
     },
     { "name": "EventVersion", "type": "int" },
     { "name": "CorrelationId", "type": "string" },
-    { "name": "CausationId", "type": "string" }
+    { "name": "CausationId", "type": "string" },
+    { "name": "ReservationStatus", "type": "string" }
   ]
 }
