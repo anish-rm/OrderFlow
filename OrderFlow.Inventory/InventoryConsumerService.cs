@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using OrderFlow.Common.Constants;
 using OrderFlow.Contracts;
 using OrderFlow.Domain;
+using System.Text.Json;
 
 namespace OrderFlow.Inventory;
 
@@ -52,8 +53,7 @@ public class InventoryConsumerService(IConfiguration configuration, ILogger<Inve
                         {
                             case EventTypes.PAYMENTRECEIVED: 
                             {
-                                // the one type Inventory acts on
-                                var evt = MapToPaymentReceived(record); // bag → your typed class
+                                var evt = MapToPaymentReceived(record);
                                 logger.LogInformation(
                                     $"STARTED OFFSET : {result.Offset} EventUd: {evt.EventId} correlationId: {evt.CorrelationId} causationId: {evt.CausationId}");
                                 using var rscope = scopeFactory.CreateScope();
@@ -78,13 +78,38 @@ public class InventoryConsumerService(IConfiguration configuration, ILogger<Inve
                                         OrderId = evt.OrderId,
                                         ReservedAt = DateTime.UtcNow
                                     };
+
                                     var processedEvent = new ProcessedEvents()
                                     {
                                         EventId = evt.EventId,
                                         EventName = evt.EventName
                                     };
+
+                                    var stockReservedPayload = new StockReserved()
+                                    {
+                                        EventId = Guid.NewGuid(),
+                                        EventName = EventTypes.STOCKRESERVED,
+                                        ReservationId = reservation.ReservationId,
+                                        CustomerId = reservation.CustomerId,
+                                        OrderId = reservation.OrderId,
+                                        OccurredAt = DateTime.UtcNow,
+                                        CorrelationId = evt.CorrelationId,
+                                        CausationId = evt.CausationId,
+                                        ReservationStatus = "Reserved",
+                                        EventVersion = 1
+                                    };
+
+                                    var outboxMessage = new OutboxMessage()
+                                    {
+                                        EventId = stockReservedPayload.EventId,
+                                        Topic = TopicName.ORDEREVENTS,
+                                        Key = evt.OrderId,
+                                        Payload = JsonSerializer.Serialize(stockReservedPayload),
+                                    };
+
                                     db.StockReservation.Add(reservation);
                                     db.ProcessedEvents.Add(processedEvent);
+                                    db.OutboxMessage.Add(outboxMessage);
                                     db.SaveChanges();
                                     transaction.Commit();
                                     logger.LogInformation(
