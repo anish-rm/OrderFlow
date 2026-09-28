@@ -3,8 +3,15 @@ using Confluent.SchemaRegistry;
 using Microsoft.EntityFrameworkCore;
 using OrderFlow.Domain;
 using OrderFlow.Notification;
+using Serilog;
 
 var builder = Host.CreateApplicationBuilder(args);
+
+Log.Logger = new LoggerConfiguration()
+    .ReadFrom.Configuration(builder.Configuration)
+    .CreateLogger();
+builder.Logging.ClearProviders();
+builder.Services.AddSerilog();
 
 builder.Services.AddDbContext<NotificationDbContext>(options =>
 {

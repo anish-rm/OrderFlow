@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Worker">
+﻿<Project Sdk="Microsoft.NET.Sdk.Worker">
 
     <PropertyGroup>
         <TargetFramework>net10.0</TargetFramework>
@@ -10,8 +10,13 @@
     <ItemGroup>
         <PackageReference Include="Confluent.Kafka" Version="2.15.0" />
         <PackageReference Include="Confluent.SchemaRegistry.Serdes.Avro" Version="2.15.0" />
-        <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.10"/>
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.10" />
         <PackageReference Include="SchemaRegistry" Version="1.1.1" />
+		<PackageReference Include="Serilog.AspNetCore" Version="10.0.0" />
+		<PackageReference Include="Serilog.Enrichers.Environment" Version="3.0.1" />
+		<PackageReference Include="Serilog.Sinks.Console" Version="6.1.1" />
+		<PackageReference Include="Serilog.Sinks.File" Version="7.0.0" />
+		<PackageReference Include="Serilog.Sinks.Seq" Version="9.1.0" />
     </ItemGroup>
 
     <ItemGroup>

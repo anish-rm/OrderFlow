@@ -6,8 +6,15 @@ using Microsoft.EntityFrameworkCore;
 using OrderFlow.Contracts;
 using OrderFlow.Domain;
 using OrderFlow.Inventory;
+using Serilog;
 
 var builder = Host.CreateApplicationBuilder(args);
+
+Log.Logger = new LoggerConfiguration()
+    .ReadFrom.Configuration(builder.Configuration)
+    .CreateLogger();
+builder.Logging.ClearProviders();
+builder.Services.AddSerilog();
 
 builder.Services.AddHostedService<InventoryConsumerService>();
 builder.Services.AddHostedService<OutboxRelayService>();
