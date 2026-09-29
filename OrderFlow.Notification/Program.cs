@@ -42,6 +42,6 @@ builder.Services.AddSingleton<ISchemaRegistryClient>(sp =>
 var host = builder.Build();
 using (var scope = host.Services.CreateScope())
 {
-    scope.ServiceProvider.GetRequiredService<NotificationDbContext>().Database.EnsureCreated();
+    var services = scope.ServiceProvider.GetRequiredService<NotificationDbContext>().Database.EnsureCreated();
 }
 host.Run();

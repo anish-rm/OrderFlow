@@ -1,3 +1,4 @@
+using Confluent.Kafka;
 using Confluent.SchemaRegistry;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
@@ -10,6 +11,18 @@ builder.Services.AddHostedService<OrderStatusService>();
 builder.Services.AddDbContext<OrdersProjectionDbContext>(opt =>
 {
     opt.UseSqlite("Data Source=ordersprojection.db");
+});
+
+builder.Services.AddSingleton<IProducer<byte[], byte[]>>(sp =>
+{
+    var configuration = sp.GetRequiredService<IConfiguration>();
+    var config = new ProducerConfig
+    {
+        BootstrapServers = configuration["Kafka:BootstrapServers"],
+        EnableIdempotence = true
+    };
+
+    return new ProducerBuilder<byte[], byte[]>(config).Build();
 });
 
 builder.Services.AddSingleton<ISchemaRegistryClient>(sp =>
