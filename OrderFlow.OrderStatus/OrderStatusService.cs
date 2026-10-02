@@ -84,7 +84,7 @@ public class OrderStatusService(IServiceScopeFactory scopeFactory, IProducer<byt
                                         OccuredAt = evt.OccurredAt
                                     };
                                     retrydbcontext.OrderStatuses.Add(orderStatus);
-
+                                    retrydbcontext.SaveChanges();
                                     transaction.Commit();
                                 }, isTransient);
 
@@ -114,15 +114,27 @@ public class OrderStatusService(IServiceScopeFactory scopeFactory, IProducer<byt
                                         using var transaction = retrydbcontext.Database.BeginTransaction();
 
                                         var status = GetStatus(evt.EventName);
-                                        var orderStatus = new OD.OrderStatus
+                                        
+                                        var orderStatusData = retrydbcontext.OrderStatuses
+                                                            .Where(os => os.OrderId == evt.OrderId)
+                                                            .FirstOrDefault();
+                                        if(orderStatusData == null)
                                         {
-                                            CustomerId = evt.CustomerId,
-                                            Status = status,
-                                            OrderId = evt.OrderId,
-                                            OccuredAt = evt.OccurredAt
-                                        };
-                                        retrydbcontext.OrderStatuses.Add(orderStatus);
-
+                                            var orderStatus = new OD.OrderStatus
+                                            {
+                                                CustomerId = evt.CustomerId,
+                                                Status = status,
+                                                OrderId = evt.OrderId,
+                                                OccuredAt = evt.OccurredAt
+                                            };
+                                            retrydbcontext.OrderStatuses.Add(orderStatus);
+                                        }
+                                        else
+                                        {
+                                            orderStatusData.Status = status;
+                                            orderStatusData.OccuredAt = evt.OccurredAt;
+                                        }
+                                        retrydbcontext.SaveChanges();
                                         transaction.Commit();
                                     }, isTransient);
 
@@ -152,15 +164,28 @@ public class OrderStatusService(IServiceScopeFactory scopeFactory, IProducer<byt
                                         using var transaction = retrydbcontext.Database.BeginTransaction();
 
                                         var status = GetStatus(evt.EventName);
-                                        var orderStatus = new OD.OrderStatus
-                                        {
-                                            CustomerId = evt.CustomerId,
-                                            Status = status,
-                                            OrderId = evt.OrderId,
-                                            OccuredAt = evt.OccurredAt
-                                        };
-                                        retrydbcontext.OrderStatuses.Add(orderStatus);
 
+                                        var orderStatusData = retrydbcontext.OrderStatuses
+                                                            .Where(os => os.OrderId == evt.OrderId)
+                                                            .FirstOrDefault();
+
+                                        if (orderStatusData == null)
+                                        {
+                                            var orderStatus = new OD.OrderStatus
+                                            {
+                                                CustomerId = evt.CustomerId,
+                                                Status = status,
+                                                OrderId = evt.OrderId,
+                                                OccuredAt = evt.OccurredAt
+                                            };
+                                            retrydbcontext.OrderStatuses.Add(orderStatus);
+                                        }
+                                        else
+                                        {
+                                            orderStatusData.Status = status;
+                                            orderStatusData.OccuredAt = evt.OccurredAt;
+                                        }
+                                        retrydbcontext.SaveChanges();
                                         transaction.Commit();
                                     }, isTransient);
 

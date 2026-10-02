@@ -4,13 +4,23 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using OrderFlow.Domain;
 using OrderFlow.OrderStatus;
+using Serilog;
+
+
 
 var builder = Host.CreateApplicationBuilder(args);
+
+Log.Logger = new LoggerConfiguration()
+    .ReadFrom.Configuration(builder.Configuration)
+    .CreateLogger();
+builder.Logging.ClearProviders();
+builder.Services.AddSerilog();
+
 builder.Services.AddHostedService<OrderStatusService>();
 
 builder.Services.AddDbContext<OrdersProjectionDbContext>(opt =>
 {
-    opt.UseSqlite("Data Source=ordersprojection.db");
+    opt.UseSqlite("Data Source=../Data/ordersprojection.db");
 });
 
 builder.Services.AddSingleton<IProducer<byte[], byte[]>>(sp =>

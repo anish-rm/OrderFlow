@@ -16,6 +16,11 @@ public class OrdersProjectionDbContext : DbContext
         builder.Entity<OrderStatus>(b =>
         {
             b.HasIndex(k => k.OrderId).IsUnique();
+
+            b.Property(k => k.Status)
+            .HasConversion<string>()
+            .HasMaxLength(20);
         });
+        
     }
 }
