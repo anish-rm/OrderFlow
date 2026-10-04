@@ -1,5 +1,7 @@
+using Avro.Generic;
 using Confluent.Kafka;
 using Confluent.SchemaRegistry;
+using Confluent.SchemaRegistry.Serdes;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using OrderFlow.Domain;
@@ -39,6 +41,15 @@ builder.Services.AddSingleton<ISchemaRegistryClient>(sp =>
 {
     var configuration = sp.GetRequiredService<IConfiguration>();
     return new CachedSchemaRegistryClient(new SchemaRegistryConfig() { Url = configuration["SchemaRegistry:Url"] });
+});
+
+builder.Services.AddSingleton<AvroSerializer<GenericRecord>>(sp =>
+{
+    var srclient = sp.GetRequiredService<ISchemaRegistryClient>();
+    return new AvroSerializer<GenericRecord>(srclient, new AvroSerializerConfig
+    {
+        SubjectNameStrategy = SubjectNameStrategy.TopicRecord
+    });
 });
 
 var host = builder.Build();
